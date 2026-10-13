@@ -36,7 +36,7 @@
     "icon_style": "emoji"
   },
   "email": {
-    "enabled": false,
+    "enabled": true,
     "smtp_server": "smtp.qq.com",
     "smtp_port": 465,
     "imap_enabled": false,
@@ -359,7 +359,7 @@
     "default_group_limit": 3
   },
   "webhook": {
-    "enabled": false,
+    "enabled": true,
     "url_env": "HORIZON_WEBHOOK_URL",
     "delivery": "summary",
     "overview_position": "first",
@@ -370,8 +370,10 @@
       "zh"
     ],
     "request_body": {
-      "text": "#{message_title}\n\n#{summary?limit=3500&split=---}",
-      "parse_mode": "Markdown"
+      "chat_id": 7205899837,
+      "parse_mode": "Markdown",
+      "disable_web_page_preview": false,
+      "text": "#{message_title}\n\n#{summary?limit=3500&split=---}"
     },
     "headers": "Content-Type: application/json"
   },

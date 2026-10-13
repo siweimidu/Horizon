@@ -33,6 +33,18 @@ jobs:
       - name: Prepare GitHub Actions config
         run: cp data/config.github.json data/config.json
 
+      - name: Write email subscribers
+        env:
+          SUBSCRIBERS: ${{ vars.EMAIL_SUBSCRIBERS }}
+        run: |
+          if [ -n "$SUBSCRIBERS" ]; then
+            python -c "import os,json;e=[x.strip() for x in os.environ['SUBSCRIBERS'].split(',') if x.strip()];json.dump(e,open('data/subscribers.json','w'))"
+            echo "subscribers: $SUBSCRIBERS"
+          else
+            echo '["2166075979@qq.com"]' > data/subscribers.json
+            echo "EMAIL_SUBSCRIBERS not set; using default subscriber"
+          fi
+
       - name: Run Horizon
         env:
           # Map secrets to environment variables expected by config.json
@@ -42,7 +54,9 @@ jobs:
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
           LWN_KEY: ${{ secrets.LWN_KEY }}
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
           HORIZON_WEBHOOK_URL: ${{ secrets.HORIZON_WEBHOOK_URL }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: uv run horizon --hours 24
 
       - name: Set current date as environment variable
