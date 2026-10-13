@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Home
+title: AI 日报 · 使用指南
 ---
 
 <div id="lang-zh" class="lang-section" markdown="1">
