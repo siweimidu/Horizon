@@ -6,8 +6,8 @@
     "base_url": "https://generativelanguage.googleapis.com/v1beta/openai",
     "temperature": 0.3,
     "max_tokens": 8192,
-    "throttle_sec": 2,
-    "analysis_concurrency": 2,
+    "throttle_sec": 1.5,
+    "analysis_concurrency": 3,
     "enrichment_concurrency": 2,
     "languages": [
       "zh",
@@ -51,8 +51,8 @@
   "sources": {
     "hackernews": {
       "enabled": true,
-      "fetch_top_stories": 30,
-      "min_score": 50,
+      "fetch_top_stories": 12,
+      "min_score": 100,
       "category": "community",
       "profile": "tech-news"
     },
@@ -233,8 +233,8 @@
           "enabled": true,
           "sort": "hot",
           "time_filter": "day",
-          "fetch_limit": 15,
-          "min_score": 30,
+          "fetch_limit": 8,
+          "min_score": 80,
           "category": "community",
           "profile": "tech-news"
         },
@@ -243,8 +243,8 @@
           "enabled": true,
           "sort": "hot",
           "time_filter": "day",
-          "fetch_limit": 15,
-          "min_score": 30,
+          "fetch_limit": 6,
+          "min_score": 80,
           "category": "community",
           "profile": "tech-news"
         },
@@ -253,8 +253,8 @@
           "enabled": true,
           "sort": "hot",
           "time_filter": "day",
-          "fetch_limit": 10,
-          "min_score": 30,
+          "fetch_limit": 5,
+          "min_score": 80,
           "category": "community",
           "profile": "tech-news"
         }
@@ -266,7 +266,7 @@
       "query": "AI OR LLM OR 大模型 when:1d",
       "language": "zh-CN",
       "country": "CN",
-      "max_results": 50,
+      "max_results": 12,
       "category": "media",
       "profile": "tech-news"
     },
@@ -276,36 +276,19 @@
         {
           "channel": "zaihuapd",
           "enabled": true,
-          "fetch_limit": 20,
+          "fetch_limit": 8,
           "category": "zh-media",
           "profile": "tech-news"
         }
       ]
     },
-    "github": [
-      {
-        "type": "repo_releases",
-        "owner": "openai",
-        "repo": "openai-python",
-        "enabled": true,
-        "category": "lab-official",
-        "profile": "tech-news"
-      },
-      {
-        "type": "repo_releases",
-        "owner": "huggingface",
-        "repo": "transformers",
-        "enabled": true,
-        "category": "lab-blog",
-        "profile": "tech-news"
-      }
-    ]
+    "github": []
   },
   "collection": {
     "time_window_hours": 24
   },
   "digest": {
-    "max_items": 24,
+    "max_items": 12,
     "profile_order": [
       "tech-news",
       "tech-blog",
