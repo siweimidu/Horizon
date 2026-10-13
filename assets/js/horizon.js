@@ -124,9 +124,28 @@
     }
   }
 
+  /** Add a "back to home" link on article pages, derived from the RSS link in <head> */
+  function setupHomeLink() {
+    var rss = document.querySelector('link[href$="feed-zh.xml"]');
+    if (!rss) return;
+    var home = rss.getAttribute('href').replace(/feed-zh\.xml$/, '');
+    if (!home) return;
+
+    var here = window.location.pathname.replace(/\/$/, '');
+    var root = home.replace(/\/$/, '');
+    if (here === root || here === '' || here === '/') return; // already home
+
+    var a = document.createElement('a');
+    a.className = 'home-link';
+    a.href = home;
+    a.textContent = '← 首页 / Home';
+    document.body.appendChild(a);
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     processScoreBadges();
     markSemanticElements();
     setupLanguageToggle();
+    setupHomeLink();
   });
 })();

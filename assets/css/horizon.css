@@ -161,6 +161,28 @@ h1, h2, h3, h4, h5, h6 {
   gap: 0;
 }
 
+/* --- Back to Home (fixed top-left, article pages) --- */
+.home-link {
+  position: fixed;
+  top: 12px;
+  left: 16px;
+  z-index: 1000;
+  padding: 0.3em 1em;
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 3px;
+  background: rgba(0,0,0,0.15);
+  color: #fff !important;
+  font-size: 0.8em;
+  text-decoration: none;
+  backdrop-filter: blur(4px);
+  transition: background .2s;
+}
+
+.home-link:hover {
+  background: var(--hz-accent);
+  border-color: var(--hz-accent);
+}
+
 .lang-toggle button {
   padding: 0.3em 1em;
   border: 1px solid rgba(255,255,255,0.4);
